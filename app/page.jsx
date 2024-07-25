@@ -18,17 +18,19 @@ const Home = () => {
   const randomElement = array[randomIndex];
 
   const generateFO = async () => {
+    if (name == "" || from == "") {
+      return;
+    }
+
     let updatedElement = randomElement.replace(":from", from);
     updatedElement = updatedElement.replace(":name", name);
     updatedElement = updatedElement.replace(":company", name); // Use `name` or correct it if needed
 
     try {
-      const res = await fetch("/api", {
-        method: "POST",
+      const res = await fetch(`https://foaas.dev${updatedElement}`, {
         headers: {
-          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify({ updatedElement }),
       });
 
       const data = await res.json();
@@ -36,8 +38,8 @@ const Home = () => {
 
       setHasData(data.message);
       setHasFrom(data.subtitle);
-      setName("");
-      setFrom("");
+      // setName("");
+      // setFrom("");
     } catch (error) {
       console.error("Error:", error);
     }
@@ -71,7 +73,7 @@ const Home = () => {
         <div className="flex flex-col items-center mt-4">
           <div className="container">
             {hasData && <p className="text-center">{hasData}</p>}
-            <h2 className="text-right mr-4">
+            <h2 className="text-right mr-4 mt-2">
               from <span className="font-bold">{hasFrom}</span>
             </h2>
           </div>
