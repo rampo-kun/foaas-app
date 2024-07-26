@@ -73,9 +73,11 @@ const Home = () => {
         <div className="flex flex-col items-center mt-4">
           <div className="container">
             {hasData && <p className="text-center">{hasData}</p>}
-            <h2 className="text-right mr-4 mt-2">
-              from <span className="font-bold">{hasFrom}</span>
-            </h2>
+            {hasFrom && (
+              <h2 className="text-right mr-4 mt-2">
+                from <span className="font-bold">{hasFrom}</span>
+              </h2>
+            )}
           </div>
           <div className="relative w-[50vw] h-[50vh] mb-2">
             <Image
@@ -88,7 +90,7 @@ const Home = () => {
         </div>
         <button
           onClick={generateFO}
-          className="border-2 border-red-400 w-44 p-2 hover:bg-red-400 hover:text-white transition-colors duration-100"
+          className="border-2 border-red-400 w-44 p-2 hover:bg-red-400 hover:text-white transition-colors duration-100 mt-2"
         >
           Generate FO message
         </button>

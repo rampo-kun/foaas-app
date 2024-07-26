@@ -5,3 +5,23 @@
 * {
   box-sizing: border-box;
 }
+
+input {
+  @apply bg-slate-500 text-white;
+}
+
+body {
+  @apply bg-black;
+}
+
+button {
+  @apply text-white;
+}
+
+h1,
+h2,
+p,
+span,
+label {
+  @apply text-white;
+}
